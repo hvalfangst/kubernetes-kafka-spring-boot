@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: distributed-sorting-config
+data:
+  BOOTSTRAP_SERVER: localhost:29092
+  GROUP_ID: hvalfangst
+  UNSORTED_PARTITIONS_TOPIC: usp-1
+  SORTED_PARTITIONS_TOPIC: sorted-partitions
+  SYSTEM_LORD_TOPIC: system-lord
+  USERS_TOPIC: users
+  JWT_ENCRYPTION_KEY: yellauyellauitismeglossythesocalledephemeralpenguin

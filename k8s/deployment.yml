@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distributed-sorting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: distributed-sorting-app
+  template:
+    metadata:
+      labels:
+        app: distributed-sorting-app
+    spec:
+      containers:
+        - name: distributed-sorting-app
+          image: hardokkerdocker/hvalfangst:distributed-sorting-using-kafka
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: distributed-sorting-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: distributed-sorting-app
+spec:
+  selector:
+    app: distributed-sorting-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
