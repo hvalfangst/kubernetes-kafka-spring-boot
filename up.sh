@@ -6,9 +6,6 @@ set -e
 if [ "$1" = "local" ]; then
     # Run docker-compose up for Kafka
     docker-compose -f kafka/docker-compose.yml up -d
-
-    # Run docker-compose up for the database
-    docker-compose -f db/docker-compose.yml up -d
 elif [ "$1" = "kubernetes" ]; then
 
     # Build docker image
